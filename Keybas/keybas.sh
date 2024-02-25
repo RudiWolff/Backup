@@ -12,11 +12,11 @@ KeepassFile=k33pa55
 Endung=kdbx
 
 # Wenn noch keine Datei vorhanden ist, die jünger als 15 Tage ist , dann erstelle eine Kopie.
-exists=$(find "$BackupDir" -type f -name *"$KeepassFile"* -mtime +15)
-if [ -z $exists ];then
+exists=$(find "$BackupDir" -type f -name "*${KeepassFile}*" -mtime -15)
+if [ -z "$exists" ];then
     # Die aktuelle Datenbank-Datei wird im BackupDir gesichert.
     cp $KeepassDir$KeepassFile.$Endung $BackupDir$(date +%Y-%m-%d_)$KeepassFile.$Endung
 fi
 
 # Dateien, die älter als 6 Monate (=185 Tage) sind, werden gelöscht
-find "$BackupDir" -type f -name "$KeepassFile"* -mtime +185 -delete
+find "$BackupDir" -type f -name "*${KeepassFile}*" -mtime +185 -delete
