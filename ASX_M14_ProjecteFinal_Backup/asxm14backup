@@ -1,0 +1,13 @@
+#! /bin/bash
+
+# Autor: Rüdiger Wolff
+# Datum: 8.10.2024
+
+# Zweck: Da wir während unserer Abschlussarbeit der CFGS ASX auf einem remote server arbeiten,
+# ist es sinnvoll, die Daten regelmässig runterzuladen und lokal zu speichern.
+
+# cronjob des users alle 15 Minuten
+# 0/15 * * * * /usr/bin/asxm14backup
+
+# Durchführung des Backups per rclone
+rclone copy SIRS: "/mnt/Daten/Nextcloud/ASX/M14 Projecte d’administració de sistemes informàtics en xarxa/backup_ASX_M14_Projecte_Final" -P -f "- Templates/**" -c
