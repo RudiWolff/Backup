@@ -9,5 +9,9 @@
 # cronjob des users alle 15 Minuten
 # 0/15 * * * * /usr/bin/asxm14backup
 
+# Datumsausgabe für die log-Datei
+echo 
+date +%F' '%R
+
 # Durchführung des Backups per rclone
-rclone copy SIRS: "/mnt/Daten/Nextcloud/ASX/M14 Projecte d’administració de sistemes informàtics en xarxa/backup_ASX_M14_Projecte_Final" -P -f "- Templates/**" -c
+rclone copy SIRS:/ASX_M14_Projecte_Final/ "/mnt/Daten/Nextcloud/ASX/M14 Projecte d’administració de sistemes informàtics en xarxa/backup_ASX_M14_Projecte_Final" -P -f "- Templates/**"  -f "- Nextcloud*" -c
